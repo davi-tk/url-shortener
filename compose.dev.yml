@@ -1,4 +1,15 @@
 services:
+  frontend:
+    build: 
+      context: ./frontend
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - pnpm-store:/pnpm/store
+    command: npx next dev
+
   backend:
     build: ./backend
     ports:
@@ -19,4 +30,5 @@ services:
     
 volumes:
   mongodb_data_container:
+  pnpm-store:
   
